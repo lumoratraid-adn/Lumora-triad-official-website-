@@ -6,7 +6,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
- 
-}
+  allowedDevOrigins: [
+    'localhost',
+    '127.0.0.1',
+    '.trycloudflare.com',
+  ],
+};
 
-export default nextConfig
+export default nextConfig;

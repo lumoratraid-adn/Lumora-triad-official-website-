@@ -3,51 +3,27 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
-import { Code, Palette, Database, Layout, ShoppingCart, Shield } from "lucide-react"
+import { Code, Database, Layout } from "lucide-react"
 
 export default function ServicesPage() {
   const services = [
     {
-      title: "Static Websites",
-      price: "₹8,000 - ₹15,000",
-      desc: "Fast, secure, and clean sites perfect for portfolios, landing pages, and business presentations.",
+      title: "Web Development",
+      desc: "Robust digital foundations for your business.",
       icon: Layout,
-      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Custom Design"],
+      features: ["Static and dynamic websites", "Admin dashboards", "Custom web applications"],
     },
     {
-      title: "Dynamic Websites",
-      price: "₹20,000 - ₹50,000",
-      desc: "Full-featured web applications with complex business logic and database integration.",
-      icon: Code,
-      features: ["User Authentication", "Database Integration", "Admin Panel", "API Integration"],
-    },
-    {
-      title: "E-Commerce Solutions",
-      price: "₹50,000+",
-      desc: "Complete online store setup with payment gateway, cart, and order management.",
-      icon: ShoppingCart,
-      features: ["Payment Gateway", "Product Management", "Order Tracking", "Inventory System"],
-    },
-    {
-      title: "UI/UX Design",
-      price: "Custom Pricing",
-      desc: "Professional Figma designs that bring your vision to life with intuitive user experiences.",
-      icon: Palette,
-      features: ["Wireframing", "Prototyping", "User Research", "Design System"],
-    },
-    {
-      title: "Admin Panels",
-      price: "₹50,000+",
-      desc: "Custom admin dashboards for managing your business operations efficiently.",
+      title: "AI & Automation",
+      desc: "Smart systems improving efficiency and insight.",
       icon: Database,
-      features: ["Analytics Dashboard", "User Management", "Content Management", "Reports"],
+      features: ["AI-integrated workflows", "Data-driven systems", "Intelligent process automation"],
     },
     {
-      title: "Maintenance & Support",
-      price: "Custom Pricing",
-      desc: "Ongoing support and maintenance to keep your website running smoothly.",
-      icon: Shield,
-      features: ["Bug Fixes", "Updates", "Security", "Performance Optimization"],
+      title: "Product Engineering",
+      desc: "Scalable architecture for long-term success.",
+      icon: Code,
+      features: ["System architecture design", "Performance optimization", "Deployment and scaling support"],
     },
   ]
 
@@ -64,12 +40,10 @@ export default function ServicesPage() {
             className="mb-20 text-center"
           >
             <h1 className="text-6xl md:text-9xl font-serif font-black tracking-tighter mb-8 leading-none uppercase">
-              OUR <br />
-              <span className="text-muted-foreground/30 italic">SERVICES.</span>
+              Services
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We offer comprehensive web development services tailored to your business needs. From simple static sites
-              to complex dynamic systems.
+              End-to-end development services designed for scalability and long-term use.
             </p>
           </motion.div>
 
@@ -79,17 +53,17 @@ export default function ServicesPage() {
                 key={i}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
                 viewport={{ once: true, margin: "-50px" }}
                 className="p-8 rounded-[2rem] bg-card border border-border hover:border-primary/50 transition-all duration-500 group hover:shadow-xl"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                   <service.icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-primary font-bold mb-4 text-sm">{service.price}</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">{service.desc}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature, j) => (

@@ -2,25 +2,30 @@ export function Pillars() {
   const pillars = [
     {
       id: "01",
-      title: "Technology",
-      description: "Core engineering, scalable systems, and high-performance architecture built for the long term.",
+      title: "Production-ready development",
+      description: "Code that works reliably in the real world.",
     },
     {
       id: "02",
-      title: "Design",
-      description: "User experience and visual clarity that bridge the gap between complexity and usability.",
+      title: "Clean and maintainable architecture",
+      description: "Structures designed for ease of use and updates.",
     },
     {
       id: "03",
-      title: "Delivery",
-      description: "Accountability and reliability in timelines, ensuring your project lands exactly when promised.",
+      title: "Performance-first approach",
+      description: "Optimized for speed and efficiency from day one.",
+    },
+    {
+      id: "04",
+      title: "Scalable and future-proof systems",
+      description: "Built to grow with your business needs.",
     },
   ]
 
   return (
     <section className="py-24 bg-muted">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {pillars.map((pillar) => (
             <div
               key={pillar.id}

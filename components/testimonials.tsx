@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function Testimonials() {
   return (
@@ -38,11 +39,13 @@ export function Testimonials() {
                 understood our vision and brought it to life in ways we couldn't have imagined."
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-muted overflow-hidden">
-                  <img
+                <div className="w-14 h-14 rounded-full bg-muted overflow-hidden relative">
+                  <Image
                     src="/images/whatsapp-20image-202025-12-31-20at-2016.jpeg"
                     alt="Testimonial author"
-                    className="w-full h-full object-cover"
+                    width={56}
+                    height={56}
+                    className="object-cover"
                   />
                 </div>
                 <div>

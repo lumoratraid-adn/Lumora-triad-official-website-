@@ -4,41 +4,42 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
+import Image from "next/image"
 
 export default function WorksPage() {
   const projects = [
     {
       title: "E-Commerce Platform",
       category: "Dynamic Website",
-      desc: "A full-featured online store with cart, checkout, and admin panel.",
+      desc: "Full-featured online store with secure checkout and admin.",
       image: "/modern-ecommerce-website.png",
       tech: ["React", "Node.js", "MongoDB"],
     },
     {
       title: "Portfolio Website",
       category: "Static Website",
-      desc: "A clean, minimal portfolio showcasing creative work.",
+      desc: "Minimalist portfolio showcasing creative work.",
       image: "/minimal-portfolio-website.png",
       tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       title: "Restaurant Dashboard",
       category: "Admin Panel",
-      desc: "Complete order management system with real-time updates.",
+      desc: "Scalable order management system with real-time updates.",
       image: "/restaurant-admin-dashboard.jpg",
       tech: ["React", "Django", "PostgreSQL"],
     },
     {
       title: "Booking Platform",
       category: "Dynamic Website",
-      desc: "Online reservation system with payment integration.",
+      desc: "Reservation system with integrated payment processing.",
       image: "/booking-platform-interface.jpg",
       tech: ["React", "Node.js", "MySQL"],
     },
     {
       title: "Corporate Website",
       category: "Static Website",
-      desc: "Professional corporate site with modern design.",
+      desc: "Professional corporate presence with modern design.",
       image: "/corporate-business-website.png",
       tech: ["HTML", "Tailwind CSS"],
     },
@@ -57,12 +58,11 @@ export default function WorksPage() {
             className="mb-20"
           >
             <h1 className="text-6xl md:text-9xl font-serif font-black tracking-tighter mb-8 leading-none uppercase">
-              OUR <br />
-              <span className="text-muted-foreground/30 italic">WORKS.</span>
+              Selected <br />
+              <span className="text-muted-foreground/30 italic">Work.</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl">
-              Explore our portfolio of successful projects across various industries. From static websites to complex
-              dynamic systems.
+              A snapshot of platforms and products developed across different domains and technologies.
             </p>
           </motion.div>
 
@@ -72,17 +72,19 @@ export default function WorksPage() {
                 key={i}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
                 viewport={{ once: true, margin: "-50px" }}
                 className="group cursor-pointer"
               >
                 <div className="aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 bg-muted border border-border relative">
-                  <img
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 ease-[0.21,0.47,0.32,0.98] group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8 z-10">
                     <ExternalLink className="w-8 h-8 text-white" />
                   </div>
                 </div>

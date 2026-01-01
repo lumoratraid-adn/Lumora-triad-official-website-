@@ -2,6 +2,7 @@
 
 import { Plus } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function Process() {
   const steps = [
@@ -51,12 +52,14 @@ export function Process() {
               className="group cursor-default"
             >
               <div className="aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-10 relative shadow-xl border border-white/50 bg-gradient-to-br from-muted/20 to-transparent">
-                <img
+                <Image
                   src={step.image || "/placeholder.svg"}
                   alt={step.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute top-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-xl shadow-primary/40 transform group-hover:rotate-90 transition-transform duration-500">
+                <div className="absolute top-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-xl shadow-primary/40 transform group-hover:rotate-90 transition-transform duration-500 z-10">
                   <Plus className="w-6 h-6" strokeWidth={3} />
                 </div>
               </div>
