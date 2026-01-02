@@ -4,48 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated light mode to use pure white background as requested */
-  --background: oklch(1 0 0);
-  /* Pure white */
-  --foreground: oklch(0.15 0.01 30);
-  /* Dark brown/charcoal text */
-  --card: oklch(0.97 0.01 95);
-  --card-foreground: oklch(0.15 0.01 30);
-  --popover: oklch(0.98 0.005 85);
-  --popover-foreground: oklch(0.15 0.01 30);
-  --primary: oklch(0.6 0.18 35);
-  /* Slightly more vibrant orange for better pop */
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.92 0.015 85);
-  --secondary-foreground: oklch(0.2 0.01 30);
-  --muted: oklch(0.94 0.01 85);
-  --muted-foreground: oklch(0.45 0.01 30);
-  --accent: oklch(0.92 0.015 85);
-  --accent-foreground: oklch(0.2 0.01 30);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.88 0.01 85);
-  --input: oklch(0.88 0.01 85);
-  --ring: oklch(0.58 0.15 35);
-  --chart-1: oklch(0.75 0.12 60);
-  /* Pastel yellow */
-  --chart-2: oklch(0.75 0.08 320);
-  /* Pastel pink */
-  --chart-3: oklch(0.75 0.08 260);
-  /* Pastel purple */
-  --chart-4: oklch(0.75 0.08 200);
-  /* Pastel blue */
-  --chart-5: oklch(0.58 0.15 35);
-  /* Orange */
-  --radius: 1rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Dynamic Brand-Aligned Light Theme */
+  --background: #FFFFFF;
+  --foreground: #053678;
+  /* Deep Blue base */
+
+  --card: #FFFFFF;
+  --card-foreground: #053678;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #053678;
+
+  --primary: #053678;
+  /* Primary Deep Blue */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #F4F7FB;
+  /* Soft Blue accent */
+  --secondary-foreground: #6A3A8F;
+  /* Purple contrast */
+
+  --muted: #F4F7FB;
+  --muted-foreground: #6A3A8F;
+
+  --accent: #6A3A8F;
+  /* Purple Brand Accent */
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #C7D3E5;
+  /* Steel Border */
+  --input: #C7D3E5;
+  --ring: #053678;
+
+  /* Custom Brand Gradients for Light Theme */
+  --brand-gradient: linear-gradient(135deg, #053678 0%, #6A3A8F 100%);
+  --soft-gradient: linear-gradient(180deg, #FFFFFF 0%, #F4F7FB 100%);
+
+  --radius: 1.5rem;
 }
 
 .dark {

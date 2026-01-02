@@ -1,113 +1,168 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Phone, Linkedin, MessageCircle } from "lucide-react"
+import { Mail, Phone, Linkedin, MessageCircle } from "lucide-react"
 
 export function ContactForm() {
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-20 md:py-28 bg-background">
+      <div className="container mx-auto px-6 max-w-6xl">
+
+        {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/10 dark:to-primary/5 rounded-[3rem] p-8 md:p-16 border border-primary/10 relative overflow-hidden"
+          className="text-center max-w-3xl mx-auto mb-16 md:mb-20"
         >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">
-            <div className="space-y-10">
-              <div>
-                <h2 className="text-5xl md:text-7xl font-serif font-black tracking-tighter mb-6 text-foreground">
-                  Just say <span className="text-primary italic">hello!</span>
-                </h2>
-                <p className="text-xl text-muted-foreground font-medium leading-relaxed">
-                  Want to know more about us, tell us about your project or just to say hello? Drop us a line and we'll
-                  get back as soon as possible.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                <a
-                  href="mailto:hello@lumoratriad.com"
-                  className="flex items-center gap-4 text-lg font-bold text-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  hello@lumoratriad.com
-                </a>
-                <a
-                  href="tel:+91994788418"
-                  className="flex items-center gap-4 text-lg font-bold text-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  +91 994788418
-                </a>
-                <a
-                  href="https://wa.me/91994788418"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 text-lg font-bold text-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  WhatsApp Chat
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 text-lg font-bold text-foreground hover:text-primary transition-colors group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Linkedin className="w-5 h-5" />
-                  </div>
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-
-            <form className="grid gap-6 bg-background/50 backdrop-blur-xl p-8 rounded-3xl border border-border/50">
-              <div className="grid gap-2">
-                <label className="text-xs uppercase tracking-[0.2em] font-black text-muted-foreground ml-2">Full Name</label>
-                <input
-                  type="text"
-                  className="bg-background border-2 border-transparent focus:border-primary/20 rounded-2xl px-6 py-4 outline-none transition-all duration-300 ease-[0.21,0.47,0.32,0.98] font-medium placeholder:text-muted-foreground/30 focus:shadow-lg focus:shadow-primary/5"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div className="grid gap-2">
-                <label className="text-xs uppercase tracking-[0.2em] font-black text-muted-foreground ml-2">Email Address</label>
-                <input
-                  type="email"
-                  className="bg-background border-2 border-transparent focus:border-primary/20 rounded-2xl px-6 py-4 outline-none transition-all duration-300 ease-[0.21,0.47,0.32,0.98] font-medium placeholder:text-muted-foreground/30 focus:shadow-lg focus:shadow-primary/5"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div className="grid gap-2">
-                <label className="text-xs uppercase tracking-[0.2em] font-black text-muted-foreground ml-2">Your Message</label>
-                <textarea
-                  rows={4}
-                  className="bg-background border-2 border-transparent focus:border-primary/20 rounded-2xl px-6 py-4 outline-none transition-all duration-300 ease-[0.21,0.47,0.32,0.98] resize-none font-medium placeholder:text-muted-foreground/30 focus:shadow-lg focus:shadow-primary/5"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
-              <button className="bg-primary text-primary-foreground py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-primary/20 mt-2">
-                Send Message
-              </button>
-              <p className="text-xs text-muted-foreground/60 text-center font-medium">
-                We'll get back to you within 24 hours.
-              </p>
-            </form>
-          </div>
-
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-black tracking-tight mb-6 text-[#053678] dark:text-white uppercase transition-all">
+            Let’s <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#053678] to-[#6A3A8F] dark:from-primary dark:to-primary italic font-medium">Connect</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-medium">
+            Have an idea, project, or requirement?
+            Whether you’re a business, startup, or student —
+            we’re here to help you move forward with clarity.
+          </p>
         </motion.div>
+
+        {/* YOU CAN CONTACT US FOR (TOP) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16 md:mb-24"
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-10 text-center text-[#6A3A8F] dark:text-primary uppercase tracking-tighter">
+            You can contact us for
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <ServicePanel
+              title="Design"
+              items={[
+                "UI / UX Design",
+                "UX Research & User Flows",
+                "Wireframes & Prototypes",
+                "Design Systems & Animations",
+              ]}
+              color="bg-[#053678]"
+            />
+            <ServicePanel
+              title="Branding"
+              items={[
+                "Logo & Brand Identity",
+                "Posters & Creatives",
+                "Social Media Designs",
+                "Motion & Visual Design",
+              ]}
+              color="bg-[#6A3A8F]"
+            />
+            <ServicePanel
+              title="Development"
+              items={[
+                "Website Development",
+                "Mobile Applications",
+                "Backend & Databases",
+                "API & System Architecture",
+              ]}
+              color="bg-[#F4F7FB]"
+            />
+            <ServicePanel
+              title="Students"
+              items={[
+                "Academic Projects",
+                "Mini & Major Projects",
+                "Final-Year Documentation",
+                "Personal Portfolios",
+              ]}
+              color="bg-white"
+              border="border-[#C7D3E5]"
+            />
+          </div>
+        </motion.div>
+
+        {/* CONTACT METHODS — HORIZONTAL */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12"
+        >
+          <ContactCard
+            icon={<Mail className="w-5 h-5" />}
+            title="Email"
+            value="hello@lumoratriad.com"
+          />
+          <ContactCard
+            icon={<Phone className="w-5 h-5" />}
+            title="Call"
+            value="+91 99478 84418"
+          />
+          <ContactCard
+            icon={<MessageCircle className="w-5 h-5" />}
+            title="WhatsApp"
+            value="Start a chat"
+          />
+          <ContactCard
+            icon={<Linkedin className="w-5 h-5" />}
+            title="LinkedIn"
+            value="Connect"
+          />
+        </motion.div>
+
+        {/* SUPPORTING TEXT BELOW ICONS */}
+        <div className="max-w-3xl mx-auto text-center px-4">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
+            Reach out to us for collaborations, consultations, or project
+            discussions. We respond quickly and guide you clearly through
+            the next steps — no confusion, no pressure.
+          </p>
+        </div>
+
       </div>
     </section>
+  )
+}
+
+/* UI COMPONENTS */
+
+function ContactCard({ icon, title, value }: any) {
+  return (
+    <div className="flex items-center gap-4 px-6 py-4 rounded-2xl border bg-card hover:border-[#6A3A8F] dark:hover:border-primary transition-all group shadow-sm">
+      <div className="w-10 h-10 rounded-xl bg-[#053678]/10 dark:bg-primary/10 flex items-center justify-center text-[#053678] dark:text-primary group-hover:scale-110 transition-transform">
+        {icon}
+      </div>
+      <div>
+        <p className="text-[10px] uppercase tracking-widest text-[#6A3A8F] dark:text-primary font-black">
+          {title}
+        </p>
+        <p className="text-sm font-bold text-[#053678] dark:text-foreground">
+          {value}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function ServicePanel({ title, items, color, border }: any) {
+  const isDark = color === "bg-[#053678]" || color === "bg-[#6A3A8F]";
+
+  return (
+    <div className={`${color} dark:bg-card ${border || "border-border/30"} border rounded-[2.5rem] p-8 hover:shadow-xl transition-all h-full`}>
+      <h3 className={`text-xl font-black mb-6 uppercase tracking-tight ${isDark ? 'text-white' : 'text-[#053678]'} dark:text-foreground`}>
+        {title}
+      </h3>
+      <ul className={`space-y-4 ${isDark ? 'text-white/80' : 'text-[#053678]/70'} dark:text-muted-foreground`}>
+        {items.map((item: string) => (
+          <li key={item} className="flex gap-3 text-sm font-bold leading-tight">
+            <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${isDark ? 'bg-white' : 'bg-[#6A3A8F]'} dark:bg-primary shrink-0`} />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
