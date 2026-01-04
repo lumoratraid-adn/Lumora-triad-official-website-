@@ -17,10 +17,10 @@ export function Testimonials() {
             <span className="text-xs font-bold tracking-widest text-muted-foreground uppercase mb-4 block">
               Testimonial
             </span>
-            <h2 className="text-5xl md:text-7xl mb-12 leading-tight text-foreground">
-              Stories of <span className="text-primary italic">impact</span> and growth
+            <h2 className="text-3xl sm:text-5xl md:text-7xl mb-8 md:mb-12 leading-tight text-foreground">
+              Stories of <span className="text-primary italic font-medium">impact</span> and growth
             </h2>
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-lg font-medium">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-lg font-medium">
               We create connection that drive real-world results. Turning bold ideas into interactive digital solutions.
             </p>
           </motion.div>
@@ -32,25 +32,15 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-card border-2 border-border p-12 rounded-[3rem] shadow-xl relative z-10">
-              <p className="text-xl md:text-2xl font-medium leading-relaxed mb-12 italic text-foreground">
-                "Working with LuminisDigital has been a game-changer for our brand. Their creative strategies and
-                attention to detail helped us achieve a 200% increase in online engagement within six months. They truly
-                understood our vision and brought it to life in ways we couldn't have imagined."
+            <div className="bg-[#F4F7FB] dark:bg-card border-2 border-[#C7D3E5] dark:border-border p-8 sm:p-12 rounded-[2.5rem] sm:rounded-[3.5rem] shadow-xl relative z-10">
+              <p className="text-lg sm:text-xl md:text-2xl font-medium leading-relaxed mb-10 md:mb-12 italic text-[#053678] dark:text-foreground">
+                "Lumora Triad started with a vision between friends to build our own digital kingdom.
+                Our advice to those starting their own journey: Stay bold, focus on the user, and never
+                compromise on quality. We are here to turn your boldest ideas into a legacy."
               </p>
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-muted overflow-hidden relative">
-                  <Image
-                    src="/images/whatsapp-20image-202025-12-31-20at-2016.jpeg"
-                    alt="Testimonial author"
-                    width={56}
-                    height={56}
-                    className="object-cover"
-                  />
-                </div>
+              <div className="flex items-center gap-5">
                 <div>
-                  <h4 className="font-bold text-lg text-foreground">Mike Morgan</h4>
-                  <p className="text-sm text-muted-foreground font-bold uppercase tracking-wider">CEO, Flowrix</p>
+                  <h4 className="font-serif font-black text-lg sm:text-xl text-[#053678] dark:text-foreground uppercase tracking-tight">Lumora Triad</h4>
                 </div>
               </div>
             </div>

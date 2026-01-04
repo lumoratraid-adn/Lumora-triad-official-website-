@@ -3,101 +3,180 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
-import { Code, Database, Layout } from "lucide-react"
+import {
+  Layout,
+  PenTool,
+  Globe,
+  Smartphone,
+  Database,
+  Film,
+  GraduationCap,
+  User,
+} from "lucide-react"
 
-export default function ServicesPage() {
-  const services = [
-    {
-      title: "Web Development",
-      desc: "Robust digital foundations for your business.",
-      icon: Layout,
-      features: ["Static and dynamic websites", "Admin dashboards", "Custom web applications"],
-    },
-    {
-      title: "AI & Automation",
-      desc: "Smart systems improving efficiency and insight.",
-      icon: Database,
-      features: ["AI-integrated workflows", "Data-driven systems", "Intelligent process automation"],
-    },
-    {
-      title: "Product Engineering",
-      desc: "Scalable architecture for long-term success.",
-      icon: Code,
-      features: ["System architecture design", "Performance optimization", "Deployment and scaling support"],
-    },
-  ]
+/* Service data separated for clarity & reuse */
+const SERVICES = [
+  {
+    title: "UI / UX Design",
+    desc: "User-focused design for clarity, usability, and engagement.",
+    icon: Layout,
+    features: [
+      "UX research & user flows",
+      "Wireframes & UI design",
+      "Figma prototypes",
+      "Design systems & UI animations",
+    ],
+  },
+  {
+    title: "Graphic Design & Branding",
+    desc: "Strong visual identity and creative brand assets.",
+    icon: PenTool,
+    features: [
+      "Logo & brand identity",
+      "Posters & banners",
+      "Marketing & social creatives",
+    ],
+  },
+  {
+    title: "Website Design & Development",
+    desc: "High-performance, scalable websites.",
+    icon: Globe,
+    features: [
+      "Business & personal websites",
+      "Responsive & SEO-friendly",
+      "Frontend & backend development",
+      "UI animation integration",
+    ],
+  },
+  {
+    title: "Mobile App Development",
+    desc: "Clean, scalable mobile applications.",
+    icon: Smartphone,
+    features: [
+      "Android & iOS apps",
+      "App UI / UX implementation",
+      "Backend & API integration",
+    ],
+  },
+  {
+    title: "Backend & Database Solutions",
+    desc: "Reliable backend systems and secure data handling.",
+    icon: Database,
+    features: [
+      "Database design & management",
+      "Backend development",
+      "API development & integration",
+    ],
+  },
+  {
+    title: "Animation & Motion Design",
+    desc: "Motion that enhances storytelling and user experience.",
+    icon: Film,
+    features: [
+      "Motion graphics",
+      "Promotional animations",
+      "Explainer & UI animations",
+    ],
+  },
+  {
+    title: "Academic Project Development",
+    desc: "Guided academic projects with real-world relevance.",
+    icon: GraduationCap,
+    features: [
+      "School & college projects",
+      "Mini & major projects",
+      "Final-year documentation",
+    ],
+  },
+  {
+    title: "Personal Portfolio & Branding",
+    desc: "Professional portfolios to showcase skills and identity.",
+    icon: User,
+    features: [
+      "Personal portfolio websites",
+      "Developer & designer portfolios",
+      "Personal brand presentation",
+    ],
+  },
+]
 
+export function ServicesDesign() {
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
+    <section className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
 
-      <section className="pt-40 pb-20 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-20 text-center"
-          >
-            <h1 className="text-6xl md:text-9xl font-serif font-black tracking-tighter mb-8 leading-none uppercase">
-              Services
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              End-to-end development services designed for scalability and long-term use.
-            </p>
-          </motion.div>
+        {/* SECTION HEADER */}
+        <motion.header
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-20"
+        >
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif font-black tracking-tight mb-6">
+            Our Services
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+            End-to-end digital solutions covering design, development,
+            branding, and academic support.
+          </p>
+        </motion.header>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 50 }}
+        {/* SERVICES GRID */}
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service, index) => {
+            const Icon = service.icon
+
+            return (
+              <motion.article
+                key={service.title}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="p-8 rounded-[2rem] bg-card border border-border hover:border-primary/50 transition-all duration-500 group hover:shadow-xl"
+                whileHover={{ y: -6 }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.06,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+                viewport={{ once: true }}
+                className="p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] bg-card border border-border hover:border-primary/50 transition-all hover:shadow-xl group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  <service.icon className="w-7 h-7" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">{service.desc}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, j) => (
-                    <li key={j} className="text-sm flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+
+                <p className="text-sm sm:text-sm text-muted-foreground mb-6 leading-relaxed">
+                  {service.desc}
+                </p>
+
+                <ul className="space-y-2 text-xs sm:text-sm">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex gap-2">
+                      <span className="w-1.5 h-1.5 mt-2 rounded-full bg-primary shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="mt-20 text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">Not sure which service you need?</h2>
-            <p className="text-muted-foreground mb-8">
-              We offer free consultation to help you choose the right solution.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold uppercase tracking-wider hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/20"
-            >
-              Get Free Consultation
-            </a>
-          </motion.div>
+              </motion.article>
+            )
+          })}
         </div>
-      </section>
+      </div>
+    </section>
+  )
+}
 
+export default function ServicesPage() {
+  return (
+    <main className="min-h-screen bg-background">
+      <Header />
+      <div className="pt-20">
+        <ServicesDesign />
+      </div>
       <Footer />
     </main>
   )
