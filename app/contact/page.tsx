@@ -1,5 +1,6 @@
 "use client"
 
+
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -121,13 +122,22 @@ export default function ContactPage() {
               </span>
             </div>
 
+            {/* SEO-OPTIMIZED H1 */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-              Let's{" "}
+              Contact Lumora Triad –{" "}
               <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                Connect
+                Start Your Digital Project
               </span>
             </h1>
 
+            {/* SEO PARAGRAPH (IMPORTANT) */}
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Ready to elevate your business? Contact Lumora Triad today for inquiries regarding
+              professional web development, UI/UX design, and strategic branding. We are here to
+              help startups, businesses, and individuals bring their digital vision to life.
+            </p>
+
+            {/* EXISTING UX TEXT (KEEP) */}
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Have an idea, project, or requirement? We'd love to hear from you.
             </p>
@@ -139,6 +149,7 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
+
 
       {/* Contact Info Cards */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">

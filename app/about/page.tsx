@@ -1,5 +1,6 @@
 "use client"
 
+import type { Metadata } from "next"
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -12,113 +13,133 @@ import {
   Search,
   Palette,
   Code,
-  Database,
-  Smartphone,
-  GraduationCap,
-  Briefcase,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+/* =========================
+   SEO METADATA (REMOVED - Client Component)
+========================= */
+
+
+/* =========================
+   DATA
+========================= */
 const services = [
   { icon: Search, title: "UX Research", desc: "Understanding users, behaviors, and business needs" },
   { icon: Palette, title: "Wireframe → Design → Prototype", desc: "Turning ideas into interactive designs" },
   { icon: Palette, title: "Figma Design", desc: "High-quality UI, layouts, and design systems" },
   { icon: Sparkles, title: "Branding & Logo Design", desc: "Creating strong visual identities" },
-  { icon: Palette, title: "Poster & Animation Design", desc: "Engaging visual communication" },
   { icon: Code, title: "Website Development", desc: "Responsive, fast, and SEO-friendly websites" },
 ]
 
 const whyChooseUs = [
   "User-focused design approach",
-  "Clean, scalable code",
-  "Modern tools & technologies",
-  "Affordable solutions for students & startups",
+  "Clean, scalable, and maintainable code",
+  "Modern tools & proven technologies",
+  "Affordable solutions for startups and students",
   "End-to-end project support",
 ]
 
+/* =========================
+   PAGE
+========================= */
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
+      {/* ================= HERO SECTION ================= */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-6xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center space-y-6"
+            className="space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">About Us</span>
             </div>
 
+            {/* SEO OPTIMIZED H1 */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-              Building Digital Experiences{" "}
+              About Lumora Triad –{" "}
               <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                That Matter
+                Our Vision & Expertise
               </span>
             </h1>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Who We Are */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Users className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Who We Are</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                Passionate Creators & Innovators
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We are a team of passionate software engineers, designers, and digital
-                creators dedicated to building intuitive designs and reliable software
-                solutions.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Our work blends UX research, visual design, and robust development to
-                ensure every product is not only beautiful but also functional and
-                scalable.
-              </p>
-            </div>
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We're a team of friends who share a dream — to build a company that creates meaningful digital experiences. Like a family, we support each other and work together to see our vision grow from the ground up.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What We Do */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-primary/5">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">What We Do</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We specialize in creating comprehensive digital solutions that drive results
+            {/* SEO PARAGRAPH (CRITICAL) */}
+            <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
+              We are a passionate team of developers and designers at Lumora Triad, dedicated to
+              crafting exceptional digital experiences through web development, UI/UX design, and
+              branding. Our services empower forward-thinking startups and businesses to scale
+              effectively and connect with their audience through innovative technology.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ================= WHO WE ARE ================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <Users className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Who We Are</span>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Passionate Creators & Innovators
+            </h2>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              We are a team of designers, developers, and problem solvers who believe
+              great digital products are built at the intersection of user experience,
+              clean code, and thoughtful strategy.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+              Our approach blends research-driven design with reliable development
+              practices to ensure every product is scalable, maintainable, and
+              future-ready.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
+          >
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Lumora Triad started as a shared vision among friends — to build a
+              company that values creativity, collaboration, and craftsmanship.
+              Today, we continue to grow with the same passion for building meaningful
+              digital experiences.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= WHAT WE DO ================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-primary/5">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">What We Do</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We provide end-to-end digital services designed to help businesses
+              establish, scale, and succeed online.
+            </p>
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => {
@@ -130,8 +151,7 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                  className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg transition-all"
+                  className="p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all"
                 >
                   <Icon className="w-10 h-10 text-primary mb-4" />
                   <h3 className="text-xl font-bold mb-2">{service.title}</h3>
@@ -143,103 +163,64 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* ================= MISSION & VISION ================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-            >
-              <Target className="w-12 h-12 text-primary mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                To empower businesses and students by delivering innovative,
-                user-centered, and technically strong digital solutions.
-              </p>
-            </motion.div>
+        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12">
+          <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+            <Target className="w-12 h-12 text-primary mb-6" />
+            <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
+            <p className="text-lg text-muted-foreground">
+              To empower startups and businesses by delivering user-centered,
+              scalable, and high-quality digital solutions.
+            </p>
+          </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-            >
-              <Eye className="w-12 h-12 text-primary mb-6" />
-              <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                To become a trusted digital partner known for quality design, clean
-                code, and meaningful innovation.
-              </p>
-            </motion.div>
+          <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+            <Eye className="w-12 h-12 text-primary mb-6" />
+            <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
+            <p className="text-lg text-muted-foreground">
+              To become a trusted digital partner known for design excellence,
+              clean engineering, and meaningful innovation.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* ================= WHY CHOOSE US ================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-primary/5">
         <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Why Choose Us</h2>
-          </motion.div>
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">
+            Why Choose Lumora Triad
+          </h2>
 
           <div className="space-y-4">
-            {whyChooseUs.map((reason, index) => (
-              <motion.div
+            {whyChooseUs.map((reason) => (
+              <div
                 key={reason}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-colors"
+                className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50"
               >
-                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span className="text-lg">{reason}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ================= CTA ================= */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Let's Build Something Amazing Together
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Ready to transform your ideas into reality? Get in touch with us today!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" className="px-8 py-6 text-lg">
-                  Get Started
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="px-8 py-6 text-lg">
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+        <div className="container mx-auto max-w-4xl text-center p-12 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            Let’s Build Something Amazing
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Have an idea or a project in mind? Let’s turn it into a powerful digital experience.
+          </p>
+          <Link href="/contact">
+            <Button size="lg" className="px-10 py-6 text-lg">
+              Contact Us
+            </Button>
+          </Link>
         </div>
       </section>
 

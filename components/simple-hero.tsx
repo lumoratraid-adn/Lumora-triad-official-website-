@@ -23,42 +23,41 @@ export function SimpleHero() {
                     >
 
 
-                        {/* Main Headline */}
+                        {/* SEO OPTIMIZED H1 */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.8 }}
                             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
                         >
-                            Designing Experiences.{" "}
+                            Lumora Triad –{" "}
                             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                                Developing Digital Solutions.
+                                Digital Solutions & Web Development
                             </span>
                         </motion.h1>
 
-                        {/* Sub-headline */}
+                        {/* SEO PARAGRAPH */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3, duration: 0.8 }}
                             className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl mx-auto"
                         >
-                            We help businesses, startups, and students transform ideas into
-                            powerful digital products through user-centric design and scalable
-                            technology.
+                            Lumora Triad is a premier digital agency specializing in custom web development,
+                            UI/UX design, and strategic branding. We empower startups, businesses,
+                            and visionary individuals with high-performance digital solutions that drive
+                            growth, engagement, and long-term success.
                         </motion.p>
 
-                        {/* Intro Paragraph */}
+                        {/* Additional Marketing Text */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
                             className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto"
                         >
-                            At Lumora Traid, we combine creativity, research, and technology to
-                            build meaningful digital experiences. From UX research and UI design
-                            to full-stack development and database management, we deliver
-                            end-to-end solutions tailored to your goals.
+                            From in-depth UX research and interactive prototyping to full-stack engineering
+                            and creative identity design, we deliver end-to-end services tailored to unique business goals.
                         </motion.p>
 
                         {/* CTA Buttons */}

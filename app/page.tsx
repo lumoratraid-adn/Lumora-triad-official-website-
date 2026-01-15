@@ -5,6 +5,13 @@ import { HowWeWork } from "@/components/how-we-work"
 import { Testimonials } from "@/components/testimonials"
 import { ConnectForm } from "@/components/connect-form"
 import { CTASection } from "@/components/cta-section"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Lumora Triad | Web Development, UI/UX Design & Branding",
+  description:
+    "Lumora Triad provides professional web development, UI/UX design, and branding services for startups and businesses. Transform your ideas into digital reality.",
+}
 
 export default function Home() {
   return (

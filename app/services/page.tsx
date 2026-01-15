@@ -1,5 +1,6 @@
 "use client"
 
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { motion } from "framer-motion"
@@ -93,12 +94,15 @@ export function ServicesDesign() {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif font-black tracking-tight mb-6">
-            Our Services
-          </h2>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif font-black tracking-tight mb-6">
+            Lumora Triad Services –{" "}
+            <span className="block text-primary">Web Design & Development</span>
+          </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-            End-to-end digital solutions covering design, development,
-            branding, and academic support.
+            Explore our comprehensive suite of services including custom web development,
+            intuitive UI/UX design, and impactful branding. We partner with startups
+            and enterprises to deliver scalable, high-performance digital solutions
+            that drive measurable results.
           </p>
         </motion.header>
 
