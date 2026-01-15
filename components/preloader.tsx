@@ -62,7 +62,7 @@ export function Preloader() {
                                 <motion.span
                                     key={index}
                                     variants={letterVariants}
-                                    className="text-[12vw] font-serif font-black tracking-tighter leading-none bg-gradient-to-r from-[#053678] via-[#053678]/90 to-[#053678] dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent uppercase shadow-xl drop-shadow-2xl"
+                                    className="text-[12vw] font-serif font-black tracking-tighter leading-none bg-gradient-to-r from-[#053678] via-[#053678]/90 to-[#053678] dark:from-gray-300 dark:via-gray-100 dark:to-gray-400 bg-clip-text text-transparent uppercase shadow-xl drop-shadow-2xl will-change-transform"
                                 >
                                     {/* Preserve space width */}
                                     {char === " " ? "\u00A0" : char}

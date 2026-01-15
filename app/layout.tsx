@@ -61,7 +61,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased selection:bg-primary selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <Preloader />
           {children}
           <WhatsAppChatbot />
