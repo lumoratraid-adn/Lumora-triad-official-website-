@@ -59,16 +59,6 @@ const SERVICES = [
     ],
   },
   {
-    title: "Backend & Database Solutions",
-    desc: "Reliable backend systems and secure data handling.",
-    icon: Database,
-    features: [
-      "Database design & management",
-      "Backend development",
-      "API development & integration",
-    ],
-  },
-  {
     title: "Animation & Motion Design",
     desc: "Motion that enhances storytelling and user experience.",
     icon: Film,
@@ -76,16 +66,6 @@ const SERVICES = [
       "Motion graphics",
       "Promotional animations",
       "Explainer & UI animations",
-    ],
-  },
-  {
-    title: "Academic Project Development",
-    desc: "Guided academic projects with real-world relevance.",
-    icon: GraduationCap,
-    features: [
-      "School & college projects",
-      "Mini & major projects",
-      "Final-year documentation",
     ],
   },
   {

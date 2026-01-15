@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export function CTASection() {
     return (
-        <section className="py-24 bg-[#F4F7FB] dark:bg-[#050505] overflow-hidden relative border-t border-border/10">
+        <section className="py-16 md:py-24 bg-[#F4F7FB] dark:bg-[#050505] overflow-hidden relative border-t border-border/10">
             <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#053678]/10 dark:bg-primary/20 rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#6A3A8F]/10 dark:bg-primary/10 rounded-full blur-[120px]" />

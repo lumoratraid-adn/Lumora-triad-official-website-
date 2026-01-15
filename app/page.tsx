@@ -1,27 +1,35 @@
-import { ContactForm } from "@/components/contact-form"
-import { FeaturesBento } from "@/components/features-bento"
 import { Footer } from "@/components/footer"
-import { Hero } from "@/components/hero"
-import { Process } from "@/components/process"
-import { Services } from "@/components/services"
+import { SimpleHero } from "@/components/simple-hero"
+import { WhatWeDo } from "@/components/what-we-do"
+import { HowWeWork } from "@/components/how-we-work"
 import { Testimonials } from "@/components/testimonials"
+import { ConnectForm } from "@/components/connect-form"
+import { CTASection } from "@/components/cta-section"
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <div className="relative bg-[url('/theme4.jpg')] bg-fixed bg-cover bg-center">
-        {/* Subtle overlay to ensure readability and blend with hero */}
-        <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+      {/* New Simple Hero - Clean and engaging */}
+      <SimpleHero />
 
-        <div className="relative z-10">
-          <FeaturesBento />
-          <Services />
-          <Process />
-          <Testimonials />
-          <ContactForm />
-        </div>
+      {/* Main Content Sections */}
+      <div className="relative">
+        {/* What We Do - Services Overview */}
+        <WhatWeDo />
+
+        {/* How We Work - Process */}
+        <HowWeWork />
+
+        {/* Testimonials - Social Proof */}
+        <Testimonials />
+
+        {/* CTA Section */}
+        <CTASection />
+
+        {/* Contact Form */}
+        <ConnectForm />
       </div>
+
       <Footer />
     </main>
   )

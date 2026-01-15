@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export function Testimonials() {
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <motion.div

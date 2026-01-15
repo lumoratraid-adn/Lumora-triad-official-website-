@@ -10,7 +10,6 @@ export function Footer() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Works", href: "/works" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
   ]
@@ -131,7 +130,7 @@ export function Footer() {
 
         </div>
 
-        {/* LARGE DISPLAY TEXT */}
+        {/* LARGE DISPLAY TEXT WITH GRADIENT */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -139,7 +138,7 @@ export function Footer() {
           viewport={{ once: true }}
           className="relative mb-20 select-none pointer-events-none"
         >
-          <span className="text-[12vw] font-serif font-black tracking-tighter leading-none text-[#053678]/[0.08] dark:text-white/[0.05] block text-center uppercase">
+          <span className="text-[12vw] font-serif font-black tracking-tighter leading-none bg-gradient-to-r from-[#053678]/10 via-[#053678]/20 to-[#053678]/10 dark:from-white/5 dark:via-white/15 dark:to-white/5 bg-clip-text text-transparent block text-center uppercase">
             Lumora Triad
           </span>
         </motion.div>

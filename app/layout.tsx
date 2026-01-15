@@ -1,8 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google"
+import { Preloader } from "@/components/preloader"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { WhatsAppChatbot } from "@/components/whatsapp-chatbot"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -60,10 +62,13 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased selection:bg-primary selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <Preloader />
           {children}
+          <WhatsAppChatbot />
         </ThemeProvider>
         <Analytics />
       </body>
     </html>
   )
 }
+
