@@ -133,27 +133,61 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Lumora Triad",
-              alternateName: ["Lumora", "Lumora Triad Agency", "Lumora Tech"],
-              url: "https://www.lumoratriad.in",
-              logo: "https://www.lumoratriad.in/icon.svg",
-              description: "Premium Digital Agency for Web Development & UI/UX Design",
-              address: {
+              "name": "Lumora Triad",
+              "alternateName": ["Lumora", "Lumora Triad Agency", "Lumora Tech"],
+              "url": "https://www.lumoratriad.in",
+              "logo": "https://www.lumoratriad.in/icon.svg",
+              "description": "Premium Digital Agency for Web Development, UI/UX Design, and strategic Branding.",
+              "address": {
                 "@type": "PostalAddress",
-                addressCountry: "IN"
+                "addressCountry": "IN"
               },
-              contactPoint: {
+              "contactPoint": {
                 "@type": "ContactPoint",
-                telephone: "+91 99478 84418",
-                contactType: "customer service",
-                areaServed: "IN",
-                availableLanguage: "en"
+                "telephone": "+91 99478 84418",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": "en"
               },
-              sameAs: [
+              "sameAs": [
                 "https://www.instagram.com/lumoratriad",
                 "https://www.linkedin.com/company/lumoratriad",
                 "https://twitter.com/lumoratriad"
               ],
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.lumoratriad.in/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.lumoratriad.in"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "About",
+                  "item": "https://www.lumoratriad.in/about"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Services",
+                  "item": "https://www.lumoratriad.in/services"
+                }
+              ]
             }),
           }}
         />
