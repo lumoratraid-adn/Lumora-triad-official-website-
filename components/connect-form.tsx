@@ -20,18 +20,38 @@ export function ConnectForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
 
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        company: "",
+        service: "",
+        message: "",
+    })
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
 
-        // Simulate form submission
-        await new Promise((resolve) => setTimeout(resolve, 2000))
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
 
-        setIsSubmitting(false)
-        setIsSuccess(true)
+            if (!response.ok) throw new Error("Failed to send message")
 
-        // Reset success state after 3 seconds
-        setTimeout(() => setIsSuccess(false), 3000)
+            setIsSuccess(true)
+            setFormData({ name: "", email: "", company: "", service: "", message: "" })
+        } catch (error) {
+            console.error("Error:", error)
+            alert("Something went wrong. Please try again or contact us directly.")
+        } finally {
+            setIsSubmitting(false)
+            setTimeout(() => setIsSuccess(false), 5000)
+        }
     }
 
     return (
@@ -91,6 +111,8 @@ export function ConnectForm() {
                                     type="text"
                                     placeholder="Your full name"
                                     required
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
                                 />
                             </div>
@@ -108,6 +130,8 @@ export function ConnectForm() {
                                     type="email"
                                     placeholder="your.email@example.com"
                                     required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
                                 />
                             </div>
@@ -127,6 +151,8 @@ export function ConnectForm() {
                                     id="company"
                                     type="text"
                                     placeholder="Your company name"
+                                    value={formData.company}
+                                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                                     className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
                                 />
                             </div>
@@ -139,7 +165,11 @@ export function ConnectForm() {
                                 >
                                     Service Interested In *
                                 </label>
-                                <Select required>
+                                <Select
+                                    required
+                                    value={formData.service}
+                                    onValueChange={(value) => setFormData({ ...formData, service: value })}
+                                >
                                     <SelectTrigger className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50">
                                         <SelectValue placeholder="Select a service" />
                                     </SelectTrigger>
@@ -177,6 +207,8 @@ export function ConnectForm() {
                                     placeholder="Tell us about your project or requirements..."
                                     required
                                     rows={5}
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     className="rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors resize-none"
                                 />
                             </div>

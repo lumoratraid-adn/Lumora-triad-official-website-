@@ -88,18 +88,38 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  })
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setIsSuccess(true)
+      if (!response.ok) throw new Error("Failed to send message")
 
-    // Reset success state after 3 seconds
-    setTimeout(() => setIsSuccess(false), 3000)
+      setIsSuccess(true)
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+    } catch (error) {
+      console.error("Error:", error)
+      alert("Something went wrong. Please try again or contact us directly.")
+    } finally {
+      setIsSubmitting(false)
+      setTimeout(() => setIsSuccess(false), 5000)
+    }
   }
 
   return (
@@ -208,6 +228,8 @@ export default function ContactPage() {
                     type="text"
                     placeholder="Your full name"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="h-12 rounded-xl"
                   />
                 </div>
@@ -221,6 +243,8 @@ export default function ContactPage() {
                     type="email"
                     placeholder="your.email@example.com"
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="h-12 rounded-xl"
                   />
                 </div>
@@ -234,6 +258,8 @@ export default function ContactPage() {
                     type="tel"
                     placeholder="+91 XXXXX XXXXX"
                     required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="h-12 rounded-xl"
                   />
                 </div>
@@ -242,7 +268,11 @@ export default function ContactPage() {
                   <label htmlFor="service" className="text-sm font-semibold">
                     Service Required *
                   </label>
-                  <Select required>
+                  <Select
+                    required
+                    value={formData.service}
+                    onValueChange={(value) => setFormData({ ...formData, service: value })}
+                  >
                     <SelectTrigger className="h-12 rounded-xl">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
@@ -273,6 +303,8 @@ export default function ContactPage() {
                     placeholder="Tell us about your project..."
                     required
                     rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="rounded-xl resize-none"
                   />
                 </div>
