@@ -1,10 +1,12 @@
-import { Footer } from "@/components/footer"
-import { SimpleHero } from "@/components/simple-hero"
+import { GlobeHero } from "@/components/globe-hero"
+import { MainHero } from "@/components/editorial-hero"
 import { WhatWeDo } from "@/components/what-we-do"
+import { ShowcaseSection } from "@/components/showcase-section"
 import { HowWeWork } from "@/components/how-we-work"
 import { Testimonials } from "@/components/testimonials"
 import { ConnectForm } from "@/components/connect-form"
 import { CTASection } from "@/components/cta-section"
+import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -15,14 +17,17 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
-      {/* New Simple Hero - Clean and engaging */}
-      <SimpleHero />
+    <main className="bg-[#fafafa]">
+      <GlobeHero />
+      <MainHero />
 
       {/* Main Content Sections */}
-      <div className="relative">
+      <div className="relative bg-[#fafafa]">
         {/* What We Do - Services Overview */}
         <WhatWeDo />
+
+        {/* Showcase - Mockups */}
+        <ShowcaseSection />
 
         {/* How We Work - Process */}
         <HowWeWork />

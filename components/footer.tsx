@@ -22,11 +22,9 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-background pt-32 pb-12 overflow-hidden border-t border-border/50 relative">
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
-
+    <footer className="bg-[#fafafa] pt-24 pb-12 overflow-hidden border-t border-black/5 relative">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
 
           {/* BRAND COLUMN */}
           <motion.div
@@ -34,22 +32,22 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
             <Link href="/" className="inline-block">
-              <img src="/lumora2.svg" alt="Lumora Triad" className="h-12 w-auto" />
+              <img src="/logo.svg" alt="Lumora Triad" className="h-10 w-auto" />
             </Link>
-            <p className="text-[#053678]/70 dark:text-muted-foreground text-sm leading-relaxed max-w-xs font-medium">
-              Designing experiences and developing digital solutions for businesses, startups, and students.
+            <p className="text-black/40 text-xs font-black uppercase tracking-[0.2em] leading-loose max-w-xs">
+              Architecting high-performance digital solutions for visionaries.
             </p>
             <div className="flex gap-4">
               {[Instagram, Twitter, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="w-10 h-10 rounded-2xl border border-[#C7D3E5] dark:border-border flex items-center justify-center text-[#053678] dark:text-muted-foreground hover:text-[#6A3A8F] hover:border-[#6A3A8F] dark:hover:text-primary dark:hover:border-primary transition-all duration-300 bg-white dark:bg-transparent"
+                  className="w-12 h-12 border border-black/5 flex items-center justify-center text-black/40 hover:bg-black hover:text-white transition-all duration-500"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
@@ -63,13 +61,13 @@ export function Footer() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h5 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#6A3A8F] dark:text-primary">Services</h5>
+            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Capabilities</h5>
             <ul className="space-y-4">
               {serviceLinks.map((item) => (
                 <li key={item}>
                   <Link
                     href="/services"
-                    className="text-sm font-bold text-[#053678]/70 hover:text-[#053678] dark:text-muted-foreground dark:hover:text-foreground transition-colors"
+                    className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
                   >
                     {item}
                   </Link>
@@ -86,13 +84,13 @@ export function Footer() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h5 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#6A3A8F] dark:text-primary">Navigation</h5>
+            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Sitemap</h5>
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm font-bold text-[#053678]/70 hover:text-[#053678] dark:text-muted-foreground dark:hover:text-foreground transition-colors"
+                    className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -109,20 +107,20 @@ export function Footer() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h5 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#6A3A8F] dark:text-primary">Contact</h5>
+            <h5 className="font-bebas text-2xl uppercase tracking-wider text-primary">Contact</h5>
             <div className="space-y-4">
               <a
                 href="mailto:hello@lumoratriad.com"
-                className="flex items-center gap-3 text-sm font-bold text-[#053678]/70 hover:text-[#053678] dark:text-muted-foreground dark:hover:text-foreground transition-colors"
+                className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
               >
-                <Mail className="w-4 h-4 text-[#6A3A8F] dark:text-primary" />
+                <Mail className="w-4 h-4 text-primary" />
                 hello@lumoratriad.com
               </a>
               <a
                 href="tel:+91994788418"
-                className="flex items-center gap-3 text-sm font-bold text-[#053678]/70 hover:text-[#053678] dark:text-muted-foreground dark:hover:text-foreground transition-colors"
+                className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
               >
-                <Phone className="w-4 h-4 text-[#6A3A8F] dark:text-primary" />
+                <Phone className="w-4 h-4 text-primary" />
                 +91 99478 84418
               </a>
             </div>
@@ -130,27 +128,27 @@ export function Footer() {
 
         </div>
 
-        {/* LARGE DISPLAY TEXT WITH GRADIENT */}
+        {/* LARGE DISPLAY TEXT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative mb-20 select-none pointer-events-none"
+          className="relative mb-16 select-none pointer-events-none"
         >
-          <span className="text-[12vw] font-serif font-black tracking-tighter leading-none bg-gradient-to-r from-[#053678]/10 via-[#053678]/20 to-[#053678]/10 dark:from-white/5 dark:via-white/15 dark:to-white/5 bg-clip-text text-transparent block text-center uppercase">
-            Lumora Triad
+          <span className="editorial-heading text-black/5 block text-center uppercase tracking-[0.05em] stroke-text">
+            LUMORA TRIAD
           </span>
         </motion.div>
 
         {/* BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-border/50">
-          <p className="text-[10px] font-black text-muted-foreground tracking-[0.2em] uppercase">
-            © {currentYear} Lumora Triad. All rights reserved.
+        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-black/5">
+          <p className="text-[10px] font-black text-black/20 tracking-[0.3em] uppercase">
+            © {currentYear} <span className="text-primary">Lumora Triad</span>. Built for the bold.
           </p>
-          <div className="flex gap-8 mt-6 md:mt-0 text-[10px] font-black text-muted-foreground tracking-[0.2em] uppercase">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
+          <div className="flex gap-8 mt-6 md:mt-0 text-[10px] font-black text-black/20 tracking-[0.3em] uppercase">
+            <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
           </div>
         </div>
 

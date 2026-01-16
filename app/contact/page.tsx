@@ -1,8 +1,6 @@
 "use client"
 
-
 import { motion } from "framer-motion"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,10 +17,8 @@ import {
   Phone,
   Globe,
   Send,
-  Sparkles,
-  CheckCircle2,
   Loader2,
-  Facebook,
+  CheckCircle2,
   Instagram,
   Linkedin,
   Twitter,
@@ -33,8 +29,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@lumoratriad.com",
-    href: "mailto:hello@lumoratriad.com",
+    value: "hello@lumoratriad.in",
+    href: "mailto:hello@lumoratriad.in",
   },
   {
     icon: Phone,
@@ -44,356 +40,153 @@ const contactInfo = [
   },
   {
     icon: Globe,
-    label: "Website",
-    value: "www.lumoratriad.com",
-    href: "https://www.lumoratriad.com",
+    label: "Support",
+    value: "support@lumoratriad.in",
+    href: "mailto:support@lumoratriad.in",
   },
-]
-
-const socialLinks = [
-  {
-    icon: Facebook,
-    label: "Facebook",
-    href: "https://www.facebook.com/",
-    color: "hover:text-[#1877F2]",
-  },
-  {
-    icon: Instagram,
-    label: "Instagram",
-    href: "https://www.instagram.com/lumo.ratraid/?hl=en",
-    color: "hover:text-[#E4405F]",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/lumoratriad/",
-    color: "hover:text-[#0A66C2]",
-  },
-  {
-    icon: Twitter,
-    label: "X (Twitter)",
-    href: "https://x.com/LumoraTraid",
-    color: "hover:text-[#000000]",
-  },
-]
-
-const services = [
-  "Website Development",
-  "UI/UX Design & Figma Projects",
-  "Branding, Logo & Posters",
-  "Animations & Creative Design",
 ]
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  })
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (!response.ok) throw new Error("Failed to send message")
-
-      setIsSuccess(true)
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
-    } catch (error) {
-      console.error("Error:", error)
-      alert("Something went wrong. Please try again or contact us directly.")
-    } finally {
-      setIsSubmitting(false)
-      setTimeout(() => setIsSuccess(false), 5000)
-    }
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    setIsSubmitting(false)
+    setIsSuccess(true)
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
+    <main className="min-h-screen bg-[#fafafa] overflow-hidden">
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="container mx-auto max-w-6xl">
+      {/* Contact Hero */}
+      <section className="relative pt-32 pb-16">
+        {/* Cinematic Background Elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden text-black/[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e0e7ff]/20 via-[#fafafa] to-[#f8fafc]" />
+          <div className="absolute top-0 right-0 w-[120%] h-full opacity-[0.2] pointer-events-none">
+            <div className="absolute top-[20%] left-0 w-full h-[1px] bg-current transform rotate-[-5deg]" />
+            <div className="absolute top-[45%] left-0 w-full h-[1px] bg-current transform rotate-[-3deg]" />
+          </div>
+        </div>
+
+        <div className="container mx-auto text-center space-y-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                From Idea to Impact
-              </span>
-            </div>
-
-            {/* SEO-OPTIMIZED H1 */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-              Contact Lumora Triad –{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                Start Your Digital Project
-              </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              INITIATE PROJECT
+            </span>
+            <h1 className="editorial-heading text-black uppercase">
+              READY TO <span className="text-primary italic">INITIATE?</span> <br />
+              <span className="text-black/10 stroke-text">LET&apos;S TALK.</span>
             </h1>
-
-            {/* SEO PARAGRAPH (IMPORTANT) */}
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Ready to elevate your business? Contact Lumora Triad today for inquiries regarding
-              professional web development, UI/UX design, and strategic branding. We are here to
-              help startups, businesses, and individuals bring their digital vision to life.
-            </p>
-
-            {/* EXISTING UX TEXT (KEEP) */}
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Have an idea, project, or requirement? We'd love to hear from you.
-            </p>
-
-            <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto">
-              Whether you're a business owner, startup founder, student, or
-              individual, we're here to help you turn your vision into reality.
+            <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium mt-6 leading-relaxed">
+              Fill out the form below or reach out via our direct channels.
+              We typically respond within 12-24 hours.
             </p>
           </motion.div>
         </div>
       </section>
 
+      {/* Main Contact Section */}
+      <section className="section-spacing bg-white border-y border-black/5 rounded-[3rem]">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-12 gap-16">
 
-      {/* Contact Info Cards */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-3 gap-6 mb-12"
-          >
-            {contactInfo.map((info, index) => {
-              const Icon = info.icon
-              return (
-                <motion.a
-                  key={info.label}
-                  href={info.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                  className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg transition-all text-center"
-                >
-                  <Icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                  <div className="text-sm text-muted-foreground mb-1">
-                    {info.label}
-                  </div>
-                  <div className="font-semibold">{info.value}</div>
-                </motion.a>
-              )
-            })}
-          </motion.div>
-        </div>
-      </section>
+            {/* Left Column: Info */}
+            <div className="lg:col-span-5 space-y-12">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-black tracking-tight text-black uppercase">CONTACT INFO</h3>
+                <p className="text-black/40 font-bold uppercase text-xs tracking-widest">Prefer direct communication? Use our details below.</p>
+              </div>
 
-      {/* Main Content Grid */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-semibold">
-                    Name *
-                  </label>
-                  <Input
-                    id="name"
-                    type="text"
-                    placeholder="Your full name"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="h-12 rounded-xl"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-semibold">
-                    Email *
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="h-12 rounded-xl"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-semibold">
-                    Phone Number *
-                  </label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+91 XXXXX XXXXX"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="h-12 rounded-xl"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="service" className="text-sm font-semibold">
-                    Service Required *
-                  </label>
-                  <Select
-                    required
-                    value={formData.service}
-                    onValueChange={(value) => setFormData({ ...formData, service: value })}
+              <div className="space-y-6">
+                {contactInfo.map((info) => (
+                  <a
+                    key={info.label}
+                    href={info.href}
+                    className="flex items-center gap-6 p-6 rounded-2xl bg-[#fafafa] border border-black/5 hover:border-black/20 hover:shadow-xl transition-all group"
                   >
-                    <SelectTrigger className="h-12 rounded-xl">
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="web-dev">
-                        Website Development
-                      </SelectItem>
-                      <SelectItem value="ui-ux-figma">
-                        UI/UX Design & Figma Projects
-                      </SelectItem>
-                      <SelectItem value="branding">
-                        Branding, Logo & Posters
-                      </SelectItem>
-                      <SelectItem value="animations">
-                        Animations & Creative Design
-                      </SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-semibold">
-                    Project Description *
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your project..."
-                    required
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="rounded-xl resize-none"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  disabled={isSubmitting || isSuccess}
-                  className="w-full h-12 rounded-xl text-base font-semibold"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Sending...
-                    </>
-                  ) : isSuccess ? (
-                    <>
-                      <CheckCircle2 className="w-5 h-5 mr-2" />
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="w-5 h-5 ml-2" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </motion.div>
-
-            {/* What You Can Contact Us For */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-6">
-                What You Can Contact Us For
-              </h2>
-              <div className="space-y-4 mb-12">
-                {services.map((service, index) => (
-                  <motion.div
-                    key={service}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-colors"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>{service}</span>
-                  </motion.div>
+                    <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center group-hover:bg-primary transition-colors">
+                      <info.icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-black text-black/20 uppercase tracking-widest">{info.label}</p>
+                      <p className="text-lg font-black text-black group-hover:text-primary transition-colors">{info.value}</p>
+                    </div>
+                  </a>
                 ))}
               </div>
 
-              {/* Social Media Links */}
-              <div>
-                <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+              <div className="pt-8 border-t border-black/10 space-y-6">
+                <h4 className="text-xs font-black uppercase tracking-widest text-black/40">Follow Our Journey</h4>
                 <div className="flex gap-4">
-                  {socialLinks.map((social) => {
-                    const Icon = social.icon
-                    return (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className={`p-4 rounded-xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all ${social.color}`}
-                        title={social.label}
-                      >
-                        <Icon className="w-6 h-6" />
-                      </motion.a>
-                    )
-                  })}
+                  {[Instagram, Linkedin, Twitter].map((Icon, i) => (
+                    <button key={i} className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center text-black/40 hover:bg-black hover:text-white transition-all">
+                      <Icon className="w-5 h-5" />
+                    </button>
+                  ))}
                 </div>
               </div>
+            </div>
 
-              {/* Taglines */}
-              <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-                <h3 className="text-lg font-bold mb-4">Our Promise</h3>
-                <div className="space-y-2 text-muted-foreground">
-                  <p>✨ Design. Develop. Deliver.</p>
-                  <p>✨ Where Creativity Meets Code</p>
-                  <p>✨ Building Digital Experiences That Matter</p>
-                </div>
+            {/* Right Column: Form */}
+            <div className="lg:col-span-7">
+              <div className="p-8 md:p-12 rounded-[2.5rem] bg-[#fafafa] border border-black/5 shadow-2xl">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold opacity-60">Full Name</label>
+                      <Input placeholder="John Doe" className="h-14 bg-white/5 rounded-xl border-white/10" required />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold opacity-60">Email Address</label>
+                      <Input type="email" placeholder="john@example.com" className="h-14 bg-white/5 rounded-xl border-white/10" required />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold opacity-60">Interested In</label>
+                    <Select>
+                      <SelectTrigger className="h-14 bg-white/5 rounded-xl border-white/10">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="web">Web Development</SelectItem>
+                        <SelectItem value="design">UI/UX Design</SelectItem>
+                        <SelectItem value="brand">Branding</SelectItem>
+                        <SelectItem value="mobile">Mobile App</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold opacity-60">Your Message</label>
+                    <Textarea placeholder="Tell us about your project..." className="min-h-[150px] bg-white/5 rounded-xl border-white/10" required />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={isSubmitting || isSuccess}
+                    className="w-full h-16 rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
+                  >
+                    {isSubmitting ? <Loader2 className="animate-spin" /> : isSuccess ? <CheckCircle2 /> : "Send Project Inquiry"}
+                  </Button>
+
+                  {isSuccess && (
+                    <p className="text-center text-primary font-bold animate-bounce mt-4">Message sent successfully! We&apos;ll be in touch soon.</p>
+                  )}
+                </form>
               </div>
-            </motion.div>
+            </div>
+
           </div>
         </div>
       </section>

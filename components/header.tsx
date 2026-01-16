@@ -1,149 +1,177 @@
 "use client"
 
 import Link from "next/link"
+import * as React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      // Set scrolled state for background
-      setScrolled(currentScrollY > 50)
+      // Scrolled state for styling
+      setScrolled(currentScrollY > 20)
 
-      // Hide header when scrolling down, show when scrolling up
+      // Visibility logic - hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setVisible(false)
+        if (!mobileMenuOpen) setVisible(false) // Scrolling down
       } else {
-        // Scrolling up
-        setVisible(true)
+        setVisible(true) // Scrolling up
       }
 
       setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+  }, [lastScrollY, mobileMenuOpen])
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+  }, [mobileMenuOpen])
 
   const navItems = [
-    { name: "HOME", href: "/" },
-    { name: "ABOUT", href: "/about" },
-    { name: "SERVICES", href: "/services" },
-    { name: "CONTACT", href: "/contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Contact", href: "/contact" },
   ]
 
   return (
-    <motion.header
-      initial={{ y: 0 }}
-      animate={{ y: visible ? 0 : -100 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6"
+    <header
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 px-6 py-4 ${scrolled ? "pt-2" : "pt-4"
+        } ${visible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full opacity-0"}`}
     >
-      <div className="container mx-auto relative h-16 sm:h-20 flex items-center justify-between">
-
+      <div
+        className={`container mx-auto flex items-center justify-between transition-all duration-500 rounded-2xl px-6 relative z-[110] ${scrolled || mobileMenuOpen
+          ? "h-14 bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+          : "h-16 bg-transparent"
+          }`}
+      >
         {/* Logo Section */}
-        <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group relative z-50">
-          <div className="flex flex-col items-center">
-            <img src="/logo.svg" alt="Lumora" className="h-10 sm:h-12 w-auto brightness-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
-          </div>
+        <Link
+          href="/"
+          onClick={() => {
+            if (typeof window !== 'undefined' && window.location.pathname === '/') {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+            setMobileMenuOpen(false);
+          }}
+          className="group relative z-[120] transition-all duration-300"
+        >
+          <img
+            src="/logo.svg"
+            alt="Lumora Triad"
+            className={`h-6 sm:h-8 w-auto transition-all duration-300 group-hover:scale-105 ${!scrolled && !mobileMenuOpen ? "invert contrast-125" : "brightness-110"}`}
+          />
         </Link>
 
-        {/* Desktop Nav Pill (Centered) */}
-        <nav className="hidden lg:flex items-center gap-1 px-8 py-3 rounded-full border border-white/10 border-t-white/30 bg-gradient-to-b from-white/10 to-transparent backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] absolute left-1/2 -translate-x-1/2 overflow-hidden">
-          {/* Silver Sheen Effect */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
-
-          <div className="flex items-center gap-6 relative z-10 text-[10px] font-bold tracking-[0.2em]">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="relative group text-white/70 hover:text-white transition-colors duration-300 uppercase py-2"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
-              </Link>
-            ))}
-          </div>
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`text-sm font-bold transition-all duration-300 tracking-tight ${scrolled || mobileMenuOpen ? "text-white/70 hover:text-primary" : "text-black/60 hover:text-black"}`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
 
         {/* Actions Section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href="/contact"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="hidden sm:flex items-center justify-center px-6 py-2.5 bg-primary text-primary-foreground rounded-full font-bold text-[10px] uppercase tracking-wider hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-primary/20"
+            className={`hidden sm:flex items-center justify-center px-6 py-2 rounded-lg font-bold text-sm tracking-tight transition-all active:scale-95 shadow-lg ${scrolled || mobileMenuOpen
+              ? "bg-primary text-black hover:brightness-110 shadow-primary/20"
+              : "bg-black text-white hover:bg-primary hover:text-black shadow-black/10"}`}
           >
-            Connect Us
+            Get Started
           </Link>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-white ml-2 relative z-50"
+            className={`p-2 rounded-xl transition-all z-[120] lg:hidden ${scrolled || mobileMenuOpen ? "text-white hover:bg-white/10" : "text-black hover:bg-black/5"}`}
+            aria-label="Toggle Menu"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              )}
-            </svg>
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl pt-24 px-6"
+            transition={{ duration: 0.4, ease: "circOut" }}
+            className="lg:hidden fixed inset-0 bg-black z-[100] flex flex-col pt-32 px-6 h-[100dvh] overflow-y-auto"
           >
-            <nav className="flex flex-col gap-6">
-              {navItems.map((item) => (
-                <Link
+            {/* Background Texture for Mobile Menu */}
+            <div className="absolute inset-0 dot-pattern opacity-[0.1] -z-10" />
+
+            <div className="flex flex-col gap-6">
+              {navItems.map((item, index) => (
+                <motion.div
                   key={item.name}
-                  href={item.href}
-                  onClick={() => {
-                    setMobileMenuOpen(false)
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }}
-                  className="text-2xl font-bold tracking-widest uppercase hover:text-primary transition-colors border-b border-border/20 pb-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
                 >
-                  {item.name}
-                </Link>
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-4xl xs:text-5xl font-black tracking-tighter text-white hover:text-primary transition-colors flex items-center justify-between group"
+                  >
+                    <span>{item.name}</span>
+                    <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" />
+                  </Link>
+                </motion.div>
               ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="mt-auto mb-12 flex flex-col gap-8"
+            >
+              <div className="h-px bg-white/10 w-full" />
+
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.2em] font-bold text-white/40">Quick Contact</p>
+                <a href="mailto:hello@lumoratriad.in" className="text-xl font-bold text-white hover:text-primary transition-colors">
+                  hello@lumoratriad.in
+                </a>
+              </div>
 
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-4 bg-primary text-primary-foreground rounded-xl font-bold uppercase tracking-widest shadow-lg mt-4"
+                className="w-full text-center py-5 bg-primary text-black rounded-2xl font-black text-xl shadow-[0_10px_30px_rgba(255,95,0,0.2)] flex items-center justify-center gap-3 active:scale-95 transition-all"
               >
-                Connect Us →
+                START A PROJECT
+                <ArrowUpRight className="w-6 h-6" />
               </Link>
-            </nav>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 }

@@ -1,10 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google"
-import { Preloader } from "@/components/preloader"
+import { Geist, Bebas_Neue, Syne, Plus_Jakarta_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { WhatsAppChatbot } from "@/components/whatsapp-chatbot"
+import { Header } from "@/components/header"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -13,10 +13,16 @@ const geistSans = Geist({
   weight: ["400", "500", "600", "700"],
 })
 
-const spaceGrotesk = Space_Grotesk({
+const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-bebas",
+  weight: "400",
+})
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
 })
 
 const jakarta = Plus_Jakarta_Sans({
@@ -42,9 +48,13 @@ export const metadata: Metadata = {
     "Digital Agency",
     "Software Development",
     "Lumora Triad",
+    "Lumora Triad India",
+    "Lumora Triad Kerala",
+    "Digital Agency India",
     "Website Design India",
     "Custom Web Solutions",
     "App Development",
+    "Best Web Development Agency",
   ],
   authors: [{ name: "Lumora Triad", url: baseUrl }],
   creator: "Lumora Triad",
@@ -57,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lumora Triad | Premium Web Development & UI/UX Agency",
     description:
-      "Lumora Triad delivers modern, reliable, and thoughtfully designed digital solutions with a focus on Technology, Design, and Delivery.",
+      "Transforming ideas into high-performance digital products. Specialized in Web Development, UI/UX, and Branding for visionary businesses.",
     url: baseUrl,
     siteName: "Lumora Triad",
     images: [
@@ -110,6 +120,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { ScrollToTop } from "@/components/scroll-to-top"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -118,12 +130,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${spaceGrotesk.variable} ${jakarta.variable}`}
+      className={`${geistSans.variable} ${bebasNeue.variable} ${syne.variable} ${jakarta.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased selection:bg-primary selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <Preloader />
+          <ScrollToTop />
+          <Header />
           {children}
           <WhatsAppChatbot />
         </ThemeProvider>

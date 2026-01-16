@@ -29,122 +29,68 @@ const processSteps = [
 ]
 
 export function HowWeWork() {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-100px" })
-
     return (
-        <section ref={ref} className="py-24 md:py-32 relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-            </div>
+        <section className="section-spacing relative bg-[#fafafa] overflow-hidden border-t border-black/5">
+            <div className="container mx-auto">
 
-            <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-20 space-y-4"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium text-primary">Our Process</span>
-                    </div>
-
-                    <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                        How We Work
+                <div className="mb-20 text-center space-y-6">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mx-auto">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        OUR PROCESS
+                    </span>
+                    <h2 className="editorial-heading text-black uppercase">
+                        FROM <span className="text-primary italic">VISION</span><br />
+                        <span className="text-black/10 stroke-text">TO REALITY.</span>
                     </h2>
-
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                        A simple, transparent workflow designed for results
+                    <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium leading-relaxed">
+                        Our streamlined three-step phase ensures your project moves from
+                        concept to deployment with precision and speed.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Process Timeline */}
-                <div className="max-w-5xl mx-auto">
-                    <div className="relative">
-                        {/* Connection Line - Desktop */}
-                        <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent" />
+                <div className="relative">
+                    {/* Desktop Timeline Line */}
+                    <div className="hidden lg:block absolute top-[120px] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-black/10 to-transparent z-0" />
 
-                        {/* Steps */}
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-                            {processSteps.map((step, index) => {
-                                const Icon = step.icon
-                                return (
-                                    <motion.div
-                                        key={step.number}
-                                        initial={{ opacity: 0, y: 40 }}
-                                        animate={
-                                            isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
-                                        }
-                                        transition={{
-                                            duration: 0.6,
-                                            delay: index * 0.2,
-                                            ease: [0.25, 0.4, 0.25, 1],
-                                        }}
-                                        className="relative"
-                                    >
-                                        {/* Connection Dot - Desktop */}
-                                        <div className="hidden lg:block absolute top-24 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10" />
+                    {/* Mobile Timeline Line */}
+                    <div className="lg:hidden absolute left-10 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-black/5 to-transparent z-0 ml-[0.5px] max-md:block hidden" />
 
-                                        {/* Card */}
-                                        <motion.div
-                                            whileHover={{ y: -8 }}
-                                            transition={{ duration: 0.3, ease: "easeOut" }}
-                                            className="relative p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
-                                        >
-                                            {/* Number Badge */}
-                                            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-xl bg-primary/10 border border-primary/20">
-                                                <span className="text-2xl font-bold text-primary">
-                                                    {step.number}
-                                                </span>
-                                            </div>
+                    {/* Steps */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
+                        {processSteps.map((step, index) => {
+                            const Icon = step.icon
+                            return (
+                                <motion.div
+                                    key={step.number}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="relative z-10 space-y-8 group text-center lg:text-left"
+                                >
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto lg:mx-0 rounded-[2rem] bg-black flex items-center justify-center group-hover:bg-primary transition-all duration-500 shadow-xl">
+                                        <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white group-hover:text-black transition-transform group-hover:scale-110" />
+                                    </div>
 
-                                            {/* Icon */}
-                                            <div className="mb-6">
-                                                <Icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
-                                            </div>
-
-                                            {/* Title */}
-                                            <h3 className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">
-                                                {step.title}
-                                            </h3>
-
-                                            {/* Description */}
-                                            <p className="text-muted-foreground leading-relaxed">
-                                                {step.description}
-                                            </p>
-
-                                            {/* Decorative gradient */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                                        </motion.div>
-
-                                        {/* Mobile Connection Line */}
-                                        {index < processSteps.length - 1 && (
-                                            <div className="lg:hidden flex justify-center my-6">
-                                                <div className="w-0.5 h-12 bg-gradient-to-b from-border to-transparent" />
-                                            </div>
-                                        )}
-                                    </motion.div>
-                                )
-                            })}
-                        </div>
+                                    <div className="space-y-4">
+                                        <div className="inline-block px-4 py-1.5 rounded-full bg-black/5 text-black/40 text-[10px] font-black tracking-[0.2em] uppercase border border-black/5">
+                                            Phase {step.number}
+                                        </div>
+                                        <h3 className="text-3xl font-black tracking-tight text-black group-hover:text-primary transition-colors uppercase">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-black/60 leading-relaxed font-medium text-lg">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            )
+                        })}
                     </div>
-
-                    {/* Bottom CTA or Note */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.6, delay: 0.8 }}
-                        className="mt-16 text-center"
-                    >
-                        <p className="text-muted-foreground italic">
-                            Every project is unique, and we adapt our process to fit your specific needs
-                        </p>
-                    </motion.div>
                 </div>
+
             </div>
         </section>
     )

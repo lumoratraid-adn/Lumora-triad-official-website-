@@ -1,226 +1,192 @@
 "use client"
 
-import type { Metadata } from "next"
 import { motion } from "framer-motion"
-import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import {
-  Users,
-  Target,
-  Eye,
-  CheckCircle2,
-  Sparkles,
-  Search,
-  Palette,
-  Code,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
-
-/* =========================
-   SEO METADATA (REMOVED - Client Component)
-========================= */
-
-
-/* =========================
-   DATA
-========================= */
-const services = [
-  { icon: Search, title: "UX Research", desc: "Understanding users, behaviors, and business needs" },
-  { icon: Palette, title: "Wireframe → Design → Prototype", desc: "Turning ideas into interactive designs" },
-  { icon: Palette, title: "Figma Design", desc: "High-quality UI, layouts, and design systems" },
-  { icon: Sparkles, title: "Branding & Logo Design", desc: "Creating strong visual identities" },
-  { icon: Code, title: "Website Development", desc: "Responsive, fast, and SEO-friendly websites" },
-]
+import { ArrowUpRight, CheckCircle2 } from "lucide-react"
 
 const whyChooseUs = [
   "User-focused design approach",
   "Clean, scalable, and maintainable code",
   "Modern tools & proven technologies",
-  "Affordable solutions for startups and students",
+  "Affordable solutions for startups",
   "End-to-end project support",
+  "Seamless Communication",
 ]
 
-/* =========================
-   PAGE
-========================= */
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
+    <main className="min-h-screen bg-[#fafafa] overflow-hidden">
 
-      {/* ================= HERO SECTION ================= */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="container mx-auto max-w-6xl text-center">
+      {/* Hero Section with Sharp Background */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        {/* Cinematic Background Elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden text-black/[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#e0e7ff]/20 via-[#fafafa] to-[#f8fafc]" />
+          <div className="absolute top-0 right-0 w-[120%] h-full opacity-[0.2] pointer-events-none">
+            <div className="absolute top-[20%] left-0 w-full h-[1px] bg-current transform rotate-[-5deg]" />
+            <div className="absolute top-[45%] left-0 w-full h-[1px] bg-current transform rotate-[-3deg]" />
+          </div>
+        </div>
+
+        <div className="container mx-auto max-w-5xl text-center space-y-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">About Us</span>
-            </div>
-
-            {/* SEO OPTIMIZED H1 */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-              About Lumora Triad –{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                Our Vision & Expertise
-              </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              THE AGENCY STORY
+            </span>
+            <h1 className="editorial-heading text-black uppercase">
+              WE ARE <span className="text-primary italic">LUMORA.</span><br />
+              <span className="text-black/10 stroke-text">YOUR DIGITAL PARTNERS.</span>
             </h1>
-
-            {/* SEO PARAGRAPH (CRITICAL) */}
-            <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-              We are a passionate team of developers and designers at Lumora Triad, dedicated to
-              crafting exceptional digital experiences through web development, UI/UX design, and
-              branding. Our services empower forward-thinking startups and businesses to scale
-              effectively and connect with their audience through innovative technology.
+            <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium mt-6 leading-relaxed">
+              Lumora Triad is a premium digital agency specialized in building high-performance
+              web and mobile experiences for businesses that refuse to settle for average.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ================= WHO WE ARE ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <Users className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Who We Are</span>
+      {/* Core Values / Manifesto */}
+      <section className="section-spacing bg-white border-y border-black/5 rounded-[3rem] relative overflow-hidden">
+        <div className="container mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <h2 className="editorial-heading text-4xl lg:text-5xl text-black">OUR MANIFESTO.</h2>
+              <div className="space-y-6 text-xl text-black/60 font-medium leading-relaxed">
+                <p>
+                  At Lumora Triad, we believe that software should be an extension of human intent.
+                  Every pixel and line of code we write is a conscious decision towards excellence.
+                </p>
+                <p>
+                  Our mission is to bridge the gap between complex technology and intuitive design,
+                  making powerful digital tools accessible to brands of all sizes.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-black/10">
+                <div className="space-y-1">
+                  <span className="text-3xl font-black text-primary">0%</span>
+                  <p className="text-xs uppercase tracking-widest font-bold text-black/40">Quality Compromise</p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-3xl font-black text-primary">100%</span>
+                  <p className="text-xs uppercase tracking-widest font-bold text-black/40">Client Obsession</p>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Passionate Creators & Innovators
-            </h2>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We are a team of designers, developers, and problem solvers who believe
-              great digital products are built at the intersection of user experience,
-              clean code, and thoughtful strategy.
-            </p>
-
-            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-              Our approach blends research-driven design with reliable development
-              practices to ensure every product is scalable, maintainable, and
-              future-ready.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-          >
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Lumora Triad started as a shared vision among friends — to build a
-              company that values creativity, collaboration, and craftsmanship.
-              Today, we continue to grow with the same passion for building meaningful
-              digital experiences.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================= WHAT WE DO ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-primary/5">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">What We Do</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We provide end-to-end digital services designed to help businesses
-              establish, scale, and succeed online.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all"
-                >
-                  <Icon className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.desc}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= MISSION & VISION ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-12">
-          <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-            <Target className="w-12 h-12 text-primary mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-            <p className="text-lg text-muted-foreground">
-              To empower startups and businesses by delivering user-centered,
-              scalable, and high-quality digital solutions.
-            </p>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-            <Eye className="w-12 h-12 text-primary mb-6" />
-            <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
-            <p className="text-lg text-muted-foreground">
-              To become a trusted digital partner known for design excellence,
-              clean engineering, and meaningful innovation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-primary/5">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12">
-            Why Choose Lumora Triad
-          </h2>
-
-          <div className="space-y-4">
-            {whyChooseUs.map((reason) => (
-              <div
-                key={reason}
-                className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border/50"
+            <div className="relative group">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="rounded-[2.5rem] overflow-hidden border border-black/10 shadow-2xl relative"
               >
-                <CheckCircle2 className="w-6 h-6 text-primary" />
-                <span className="text-lg">{reason}</span>
+                <img
+                  src="/about_hero.png"
+                  alt="Lumora Process"
+                  className="w-full aspect-[4/5] object-cover transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#fafafa]/60 to-transparent" />
+              </motion.div>
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 -left-6 p-6 rounded-3xl bg-black text-white font-black text-xl shadow-2xl rotate-3">
+                BUILT_BY_VISIONARIES
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="section-spacing">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="col-span-1 lg:col-span-2 rounded-[2.5rem] overflow-hidden h-64 sm:h-80 md:h-96 relative group">
+              <img
+                src="/heromage1.jpg"
+                alt="Strategy"
+                className="w-full h-full object-cover transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-black/20 p-10 flex flex-col justify-end">
+                <h4 className="text-3xl font-black text-white">STRATEGIC_PLANNING</h4>
+              </div>
+            </div>
+            <div className="rounded-[2.5rem] overflow-hidden h-64 sm:h-80 md:h-96 relative group">
+              <img
+                src="/modern-clean-code-on-a-sleek-monitor.jpg"
+                alt="Dev"
+                className="w-full h-full object-cover transition-all duration-1000"
+              />
+              <div className="absolute inset-0 bg-black/20 p-10 flex flex-col justify-end">
+                <h4 className="text-2xl font-black text-white uppercase">TECH_STACK</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="section-spacing bg-white border-y border-black/5 rounded-[3rem]">
+        <div className="container mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="editorial-heading text-[clamp(2rem,6vw,4.5rem)] text-black">
+              WHY WE <span className="text-primary italic">STAND OUT</span>.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((reason, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className="p-8 rounded-3xl bg-[#fafafa] border border-black/5 hover:border-primary/40 transition-all group shadow-sm hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="flex items-center gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                  <p className="text-lg font-bold tracking-tight text-black/80 group-hover:text-black transition-colors">
+                    {reason}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl text-center p-12 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Let’s Build Something Amazing
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Have an idea or a project in mind? Let’s turn it into a powerful digital experience.
-          </p>
-          <Link href="/contact">
-            <Button size="lg" className="px-10 py-6 text-lg">
-              Contact Us
-            </Button>
-          </Link>
+      {/* CTA Section */}
+      <section className="section-spacing">
+        <div className="container mx-auto">
+          <div className="p-12 md:p-20 rounded-[3.5rem] bg-luxury-gradient text-black flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
+            {/* Background Texture with Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="/architectural-minimalist-office-with-warm-lighting.jpg"
+                alt="Project Background"
+                className="w-full h-full object-cover opacity-[0.15]"
+              />
+              <div className="absolute inset-0 dot-pattern opacity-[0.2]" />
+            </div>
+
+            <div className="relative z-10 text-center md:text-left space-y-4">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">
+                READY TO <span className="italic">EVOLVE?</span>
+              </h2>
+              <p className="text-lg font-bold opacity-80">Let&apos;s build something extraordinary together.</p>
+            </div>
+            <Link
+              href="/contact"
+              className="relative z-10 px-12 py-6 bg-black text-white rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-xl"
+            >
+              Start Your Journey
+              <ArrowUpRight className="w-6 h-6" />
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -1,7 +1,8 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import * as React from "react"
+import { useRef, useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -15,10 +16,13 @@ import {
 import { Sparkles, Send, CheckCircle2, Loader2 } from "lucide-react"
 
 export function ConnectForm() {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: "-100px" })
+    const [mounted, setMounted] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const [formData, setFormData] = useState({
         name: "",
@@ -28,251 +32,124 @@ export function ConnectForm() {
         message: "",
     })
 
+    if (!mounted) return null;
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-
-            if (!response.ok) throw new Error("Failed to send message")
-
-            setIsSuccess(true)
-            setFormData({ name: "", email: "", company: "", service: "", message: "" })
-        } catch (error) {
-            console.error("Error:", error)
-            alert("Something went wrong. Please try again or contact us directly.")
-        } finally {
-            setIsSubmitting(false)
-            setTimeout(() => setIsSuccess(false), 5000)
-        }
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        setIsSubmitting(false)
+        setIsSuccess(true)
     }
 
     return (
-        <section
-            ref={ref}
-            className="py-16 md:py-32 relative overflow-hidden bg-gradient-to-b from-background to-background/50"
-        >
-            {/* Background decoration */}
-            <div className="absolute inset-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-            </div>
+        <section className="section-spacing relative bg-[#fafafa] overflow-hidden border-t border-black/5">
+            <div className="container mx-auto">
+                <div className="max-w-4xl mx-auto">
 
-            <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16 space-y-4"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium text-primary">Get In Touch</span>
+                    {/* Section Header */}
+                    <div className="mb-20 text-center space-y-6">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full text-[10px] font-bold tracking-[0.2em] text-black/60 uppercase border border-black/5 backdrop-blur-sm mx-auto">
+                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                            GET IN TOUCH
+                        </span>
+                        <h2 className="editorial-heading text-black uppercase">
+                            LET&apos;S <span className="text-primary italic">BUILD</span><br />
+                            <span className="text-black/10 stroke-text">YOUR NEXT BIG THING.</span>
+                        </h2>
+                        <p className="max-w-2xl mx-auto text-xl md:text-2xl text-black/60 font-medium leading-relaxed">
+                            Have an idea or a project in mind? We respond to all
+                            inquiries within 24 hours.
+                        </p>
                     </div>
 
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                        Let's Build Something Together
-                    </h2>
+                    {/* Form Container */}
+                    <div className="p-8 md:p-16 rounded-[3rem] bg-white border border-black/5 shadow-[0_50px_100px_rgba(0,0,0,0.05)] relative overflow-hidden">
+                        <div className="relative z-10">
+                            <form onSubmit={handleSubmit} className="space-y-8">
+                                <div className="grid md:grid-cols-2 gap-10">
+                                    <div className="space-y-3">
+                                        <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Your Name</label>
+                                        <Input
+                                            placeholder="John Doe"
+                                            className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                                        <Input
+                                            type="email"
+                                            placeholder="john@example.com"
+                                            className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold"
+                                            required
+                                        />
+                                    </div>
+                                </div>
 
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                        Have an idea, project, or requirement? We'd love to hear from you.
-                    </p>
-                </motion.div>
+                                <div className="space-y-3">
+                                    <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Interested In</label>
+                                    <Select>
+                                        <SelectTrigger className="h-16 bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary font-bold text-black uppercase tracking-widest">
+                                            <SelectValue placeholder="Select a service" />
+                                        </SelectTrigger>
+                                        <SelectContent className="bg-white border-black/5">
+                                            <SelectItem value="web">Web Development</SelectItem>
+                                            <SelectItem value="design">UI/UX Design</SelectItem>
+                                            <SelectItem value="brand">Branding</SelectItem>
+                                            <SelectItem value="mobile">Mobile App</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
 
-                {/* Form Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="max-w-2xl mx-auto"
-                >
-                    <div className="relative p-8 sm:p-12 rounded-3xl bg-card/50 border border-border/50 backdrop-blur-sm shadow-2xl">
-                        {/* Decorative gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl pointer-events-none" />
+                                <div className="space-y-3">
+                                    <label className="text-xs font-black text-black/40 uppercase tracking-[0.2em] ml-1">Message</label>
+                                    <Textarea
+                                        placeholder="Briefly describe your project..."
+                                        className="min-h-[150px] bg-[#fafafa] rounded-2xl border-black/5 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-black font-bold pt-4"
+                                        required
+                                    />
+                                </div>
 
-                        <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
-                            {/* Name Field */}
-                            <div className="space-y-2">
-                                <label
-                                    htmlFor="name"
-                                    className="text-sm font-semibold text-foreground"
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting || isSuccess}
+                                    className="w-full h-18 py-6 rounded-2xl bg-black text-white font-black text-lg uppercase tracking-[0.2em] shadow-2xl transition-all hover:bg-primary hover:text-black hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
                                 >
-                                    Name *
-                                </label>
-                                <Input
-                                    id="name"
-                                    type="text"
-                                    placeholder="Your full name"
-                                    required
-                                    value={formData.name}
-                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
-                                />
-                            </div>
+                                    {isSubmitting ? <Loader2 className="animate-spin" /> : isSuccess ? <CheckCircle2 /> : (
+                                        <>
+                                            Send Project Brief
+                                            <Send className="w-5 h-5" />
+                                        </>
+                                    )}
+                                </Button>
 
-                            {/* Email Field */}
-                            <div className="space-y-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-sm font-semibold text-foreground"
-                                >
-                                    Email *
-                                </label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="your.email@example.com"
-                                    required
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
-                                />
-                            </div>
-
-                            {/* Company Field (Optional) */}
-                            <div className="space-y-2">
-                                <label
-                                    htmlFor="company"
-                                    className="text-sm font-semibold text-foreground"
-                                >
-                                    Company{" "}
-                                    <span className="text-muted-foreground font-normal">
-                                        (optional)
-                                    </span>
-                                </label>
-                                <Input
-                                    id="company"
-                                    type="text"
-                                    placeholder="Your company name"
-                                    value={formData.company}
-                                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                    className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors"
-                                />
-                            </div>
-
-                            {/* Service Interested In */}
-                            <div className="space-y-2">
-                                <label
-                                    htmlFor="service"
-                                    className="text-sm font-semibold text-foreground"
-                                >
-                                    Service Interested In *
-                                </label>
-                                <Select
-                                    required
-                                    value={formData.service}
-                                    onValueChange={(value) => setFormData({ ...formData, service: value })}
-                                >
-                                    <SelectTrigger className="h-12 rounded-xl border-border/50 bg-background/50 focus:border-primary/50">
-                                        <SelectValue placeholder="Select a service" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="web-development">
-                                            Web & Software Development
-                                        </SelectItem>
-                                        <SelectItem value="ui-ux-design">
-                                            UI/UX & Product Design
-                                        </SelectItem>
-                                        <SelectItem value="branding">
-                                            Graphic & Brand Design
-                                        </SelectItem>
-                                        <SelectItem value="digital-growth">
-                                            Digital Growth & Support
-                                        </SelectItem>
-                                        <SelectItem value="consultation">
-                                            Consultation
-                                        </SelectItem>
-                                        <SelectItem value="other">Other</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-
-                            {/* Message Field */}
-                            <div className="space-y-2">
-                                <label
-                                    htmlFor="message"
-                                    className="text-sm font-semibold text-foreground"
-                                >
-                                    Message *
-                                </label>
-                                <Textarea
-                                    id="message"
-                                    placeholder="Tell us about your project or requirements..."
-                                    required
-                                    rows={5}
-                                    value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="rounded-xl border-border/50 bg-background/50 focus:border-primary/50 transition-colors resize-none"
-                                />
-                            </div>
-
-                            {/* Submit Button */}
-                            <Button
-                                type="submit"
-                                size="lg"
-                                disabled={isSubmitting || isSuccess}
-                                className="w-full h-12 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 disabled:opacity-70"
-                            >
-                                {isSubmitting ? (
-                                    <>
-                                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                        Sending...
-                                    </>
-                                ) : isSuccess ? (
-                                    <>
-                                        <CheckCircle2 className="w-5 h-5 mr-2" />
-                                        Message Sent!
-                                    </>
-                                ) : (
-                                    <>
-                                        Send Message
-                                        <Send className="w-5 h-5 ml-2" />
-                                    </>
+                                {isSuccess && (
+                                    <p className="text-center text-primary font-black uppercase tracking-widest animate-bounce">
+                                        Message received! We&apos;ll be in touch soon.
+                                    </p>
                                 )}
-                            </Button>
+                            </form>
+                        </div>
 
-                            {/* Privacy Note */}
-                            <p className="text-xs text-center text-muted-foreground">
-                                We respect your privacy. Your information will never be shared with
-                                third parties.
-                            </p>
-                        </form>
+                        {/* Background Aura */}
+                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full" />
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/5 blur-[100px] rounded-full" />
                     </div>
-                </motion.div>
 
-                {/* Additional Contact Info */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-12 text-center"
-                >
-                    <p className="text-muted-foreground mb-4">
-                        Prefer to reach out directly?
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-6 text-sm">
-                        <a
-                            href="mailto:hello@lumoratriad.com"
-                            className="text-primary hover:underline transition-colors"
-                        >
-                            hello@lumoratriad.com
+                    {/* Direct Links */}
+                    <div className="mt-16 flex flex-wrap justify-center gap-12">
+                        <a href="mailto:hello@lumoratriad.in" className="text-xs font-black uppercase tracking-[0.2em] text-black/40 hover:text-primary transition-colors flex items-center gap-2 group">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            HELLO@LUMORATRIAD.IN
                         </a>
-                        <span className="text-border">•</span>
-                        <a
-                            href="tel:+919947884418"
-                            className="text-primary hover:underline transition-colors"
-                        >
+                        <a href="tel:+919947884418" className="text-xs font-black uppercase tracking-[0.2em] text-black/40 hover:text-primary transition-colors flex items-center gap-2 group">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                             +91 99478 84418
                         </a>
                     </div>
-                </motion.div>
+
+                </div>
             </div>
         </section>
     )

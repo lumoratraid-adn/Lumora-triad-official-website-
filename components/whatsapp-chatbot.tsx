@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, X, Send } from "lucide-react"
 
@@ -13,7 +13,16 @@ const services = [
 
 export function WhatsAppChatbot() {
     const [isOpen, setIsOpen] = useState(false)
+    const [showGreeting, setShowGreeting] = useState(true)
     const [selectedService, setSelectedService] = useState<string | null>(null)
+
+    useEffect(() => {
+        // Hide greeting after 3 seconds (+1s delay from motion)
+        const timer = setTimeout(() => {
+            setShowGreeting(false)
+        }, 4000)
+        return () => clearTimeout(timer)
+    }, [])
 
     const handleServiceClick = (service: string) => {
         setSelectedService(service)
@@ -138,12 +147,12 @@ export function WhatsAppChatbot() {
 
             {/* Greeting Bubble (shows when chat is closed) */}
             <AnimatePresence>
-                {!isOpen && (
+                {!isOpen && showGreeting && (
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
-                        transition={{ delay: 2 }}
+                        transition={{ delay: 1 }}
                         className="fixed bottom-24 right-6 z-40 max-w-[200px] sm:max-w-[250px] bg-card border border-border/50 rounded-2xl rounded-br-none p-3 shadow-xl"
                     >
                         <p className="text-sm font-medium mb-1">Have any idea? 👋</p>
