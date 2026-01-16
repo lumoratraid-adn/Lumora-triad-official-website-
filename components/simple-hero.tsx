@@ -32,7 +32,7 @@ export function SimpleHero() {
                         >
                             Lumora Triad –{" "}
                             <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                                Digital Solutions & Web Development
+                                Technology, Design & Web Development
                             </span>
                         </motion.h1>
 

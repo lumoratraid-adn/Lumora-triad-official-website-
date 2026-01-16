@@ -88,7 +88,7 @@ export function WhatWeDo() {
             y: 0,
             transition: {
                 duration: 0.6,
-                ease: [0.25, 0.4, 0.25, 1],
+                ease: [0.25, 0.4, 0.25, 1] as any,
             },
         },
     }
@@ -112,7 +112,7 @@ export function WhatWeDo() {
                     </div>
 
                     <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                        What We Do
+                        What We Do – Technology & Design Services
                     </h2>
 
                     <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
